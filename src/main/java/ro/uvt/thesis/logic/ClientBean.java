@@ -9,19 +9,21 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import ro.uvt.thesis.persistance.Client;
+
 /**
  *
  * @author Cristian
  */
 
 @Stateless
-public class Client {
+public class ClientBean {
     
     @PersistenceContext(unitName = "clients")
     private EntityManager manager;
     
     
-    public void addNewClient(ro.uvt.thesis.persistance.Client client){
+    public void addNewClient(Client client){
          manager.persist(client);
     }
     

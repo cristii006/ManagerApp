@@ -50,7 +50,7 @@ public class Vehicle implements Serializable {
         this.licencePlate = licencePlate;
         this.vehicleType = vehicleType;
         this.maximumCapacity = maximumCapacity;
-        this.active = active;
+        this.active = isActive;
     }
 
     public String getLicencePlate() {

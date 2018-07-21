@@ -14,10 +14,10 @@ import javax.ws.rs.Path;
  * @author Cristian
  */
 @Path("client")
-public class Client {
+public class ClientApi {
 
     @Inject
-    ro.uvt.thesis.logic.Client clientBean;
+    ro.uvt.thesis.logic.ClientBean clientBean;
 
     @GET
     public String create() {
