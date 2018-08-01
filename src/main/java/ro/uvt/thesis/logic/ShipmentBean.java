@@ -12,45 +12,44 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import ro.uvt.thesis.persistance.Client;
+import ro.uvt.thesis.persistance.Shipment;
 
 /**
  *
  * @author Cristian
  */
-
 @Stateless
-public class ClientBean {
+public class ShipmentBean {
     
-    @PersistenceContext(unitName = "clients")
+    @PersistenceContext(unitName = "shipment")
     private EntityManager manager;
     
     
-    public void addNewClient(Client client){
-        manager.persist(client);
+    public void addNewShipment(Shipment shipment){
+        manager.persist(shipment);
     }
     
     public void removeById(long id){
-        manager.remove(manager.find(Client.class, id));
+        manager.remove(manager.find(Shipment.class, id));
     }
     
-    public void update(Client client){
-        manager.persist(manager.merge(client));
+    public void update(Shipment shipment){
+        manager.persist(manager.merge(shipment));
     }
     
     public int count() {
         CriteriaQuery cq = manager.getCriteriaBuilder().createQuery();
-        Root<Client> rt = cq.from(Client.class);
+        Root<Shipment> rt = cq.from(Shipment.class);
         cq.select(manager.getCriteriaBuilder().count(rt));
         Query q = manager.createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
     
-    public List<Client> findAll(){
-        return manager.createQuery("SELECT t FROM" + Client.class.getSimpleName()+ "t").getResultList();
+    public List<Shipment> findAll(){
+        return manager.createQuery("SELECT t FROM" + Shipment.class.getSimpleName()+ "t").getResultList();
     }
     
-    public Client findById(long id){
-        return manager.find(Client.class, id);
+    public Shipment findById(long id){
+        return manager.find(Shipment.class, id);
     }
 }
