@@ -21,6 +21,19 @@ public class VehicleBean {
     @PersistenceContext(unitName = "vehicle")
     private EntityManager manager;
     
+    public Vehicle findByData(String licencePlate, String vehicleType, int maximumCapacity, boolean active){
+       Query q = manager.createNativeQuery("SELECT * FROM vehicle WHERE licencePlate=? AND "
+                                                       + "vehicleType=? AND"
+                                                       + "maximumCapacity=?    AND "
+                                                       + "active=?",Vehicle.class );
+       
+       q.setParameter(1, licencePlate);
+       q.setParameter(2, vehicleType);
+       q.setParameter(3, maximumCapacity);
+       q.setParameter(4, active);
+       
+       return (Vehicle) q.getSingleResult();
+    }
     
     public void addNewVehicle(Vehicle vehicle){
         manager.persist(vehicle);
