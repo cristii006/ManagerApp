@@ -7,7 +7,11 @@ package ro.uvt.thesis.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import ro.uvt.thesis.logic.ClientBean;
+import ro.uvt.thesis.persistance.Client;
 
 /**
  *
@@ -17,13 +21,27 @@ import javax.ws.rs.Path;
 public class ClientApi {
 
     @Inject
-    ro.uvt.thesis.logic.ClientBean clientBean;
+   ClientBean clientBean;
 
+    @POST
+    @Path("/name/{name}/location/{location}/email/{email}/phone/{phone}")
+    public String onPost(@PathParam("name") String name,
+                         @PathParam("location") String location,
+                         @PathParam("email") String email,
+                         @PathParam("phone") String phone) {
+        Client client = new Client(name,location,email,phone);
+        clientBean.addNewClient(client);
+        return "Client Added!";
+    }
+    
+    
     @GET
-    public String create() {
-        ro.uvt.thesis.persistance.Client client = new ro.uvt.thesis.persistance.Client("Horia Popa", "Brasov","ionion",054645654);
-         clientBean.addNewClient(client);
-        return "it worked!";
+    @Path("/name/{name}/location/{location}/email/{email}/phone/{phone}")
+    public String onGet(@PathParam("name") String name,
+                         @PathParam("location") String location,
+                         @PathParam("email") String email,
+                         @PathParam("phone") String phone) {
+        return clientBean.findByData(name, location, email, phone).toString();
     }
 
 }
