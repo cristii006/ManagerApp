@@ -42,9 +42,9 @@ public class Client implements Serializable {
     String name;
     String location;
     String email;
-    int phone;
+    String phone;
 
-    public Client(String name, String location, String email, int phone) {
+    public Client(String name, String location, String email, String phone) {
         this.name = name;
         this.location = location;
         this.email = email;
@@ -63,11 +63,11 @@ public class Client implements Serializable {
         this.email = email;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
