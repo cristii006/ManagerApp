@@ -6,10 +6,13 @@
 package ro.uvt.thesis.rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import ro.uvt.thesis.logic.ClientBean;
 import ro.uvt.thesis.persistance.Client;
 
@@ -24,24 +27,23 @@ public class ClientApi {
    ClientBean clientBean;
 
     @POST
-    @Path("/name/{name}/location/{location}/email/{email}/phone/{phone}")
-    public String onPost(@PathParam("name") String name,
-                         @PathParam("location") String location,
-                         @PathParam("email") String email,
-                         @PathParam("phone") String phone) {
-        Client client = new Client(name,location,email,phone);
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String onPost(Client client) {
         clientBean.addNewClient(client);
         return "Client Added!";
     }
     
     
     @GET
-    @Path("/name/{name}/location/{location}/email/{email}/phone/{phone}")
-    public String onGet(@PathParam("name") String name,
-                         @PathParam("location") String location,
-                         @PathParam("email") String email,
-                         @PathParam("phone") String phone) {
-        return clientBean.findByData(name, location, email, phone).toString();
+    @Path("/retrieve")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Client onGet(Client client) {
+        return clientBean.findByData(client.getName(), 
+                                     client.getLocation(), 
+                                     client.getEmail(), 
+                                     client.getPhone());
     }
 
 }

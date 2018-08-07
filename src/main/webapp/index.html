@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Start Page</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .box{
+            margin-left: 35%;
+            padding: 2cm;
+        }
+        h1{
+            text-align: center;     
+        }
+        input[type='button']{
+            margin-left: 13%;
+            margin-top: 0.5cm;
+            width: 2cm;
+        }
+
+        input{
+            width: 3cm;
+        }
+    </style>
+</head>
+<body>
+        <h1>Login Page</h1>
+
+        <div class="box">
+            <form>
+                <label>Username:</label>
+                <input style="margin-bottom: 0.5cm" id="username" type="text"/><br/>
+                <label>Password:  </label>
+                <input id="password" type="password"/><br/>
+                <input type="button" value="Login"/>
+            </form>
+        </div>
+</body>
 </html>
