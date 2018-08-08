@@ -6,17 +6,19 @@
 package ro.uvt.thesis.persistance;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.GregorianCalendar;
+import javax.persistence.Table;
 
 /**
  *
  * @author Cristian
  */
 @Entity
+@Table(schema = "shipments", name = "shipment")
 public class Shipment implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,14 +36,14 @@ public class Shipment implements Serializable {
     
     String departurePlace;
     String arrivalPlace;
-    GregorianCalendar finaldate;
+    Date finaldate;
     String transportType;
     int load;
 
     public Shipment() {
     }
 
-    public Shipment(String departurePlace, String arrivalPlace, GregorianCalendar finaldate, String transportType, int load) {
+    public Shipment(String departurePlace, String arrivalPlace, Date finaldate, String transportType, int load) {
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.finaldate = finaldate;
@@ -57,11 +59,11 @@ public class Shipment implements Serializable {
         this.arrivalPlace = arrivalPlace;
     }
 
-    public GregorianCalendar getFinaldate() {
+    public Date getFinaldate() {
         return finaldate;
     }
 
-    public void setFinaldate(GregorianCalendar finaldate) {
+    public void setFinaldate(Date finaldate) {
         this.finaldate = finaldate;
     }
 

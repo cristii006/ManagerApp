@@ -17,8 +17,9 @@ import ro.uvt.thesis.persistance.Vehicle;
  *
  * @author Cristian
  */
+@Stateless
 public class VehicleBean {
-    @PersistenceContext(unitName = "vehicle")
+    @PersistenceContext(unitName = "vehicles")
     private EntityManager manager;
     
     public Vehicle findByData(String licencePlate, String vehicleType, int maximumCapacity, boolean active){

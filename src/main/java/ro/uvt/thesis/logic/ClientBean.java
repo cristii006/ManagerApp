@@ -26,16 +26,10 @@ public class ClientBean {
     private EntityManager manager;
     
     
-    public Client findByData(String name, String location, String email, String phone){
-       Query q = manager.createNativeQuery("SELECT * FROM client WHERE name=? AND "
-                                                       + "location=? AND"
-                                                       + "email=?    AND "
-                                                       + "phone=?",Client.class );
+    public Client findById(int id){
+       Query q = manager.createQuery("SELECT c FROM client c WHERE c.id = :id ");
        
-       q.setParameter(1, name);
-       q.setParameter(2, location);
-       q.setParameter(3, email);
-       q.setParameter(4, phone);
+       q.setParameter("id", id);
        
        return (Client) q.getSingleResult();
     }

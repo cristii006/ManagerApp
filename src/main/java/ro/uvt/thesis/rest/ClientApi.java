@@ -7,10 +7,8 @@ package ro.uvt.thesis.rest;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import ro.uvt.thesis.logic.ClientBean;
@@ -35,15 +33,12 @@ public class ClientApi {
     }
     
     
-    @GET
-    @Path("/retrieve")
+    @POST
+    @Path("retrieve")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Client onGet(Client client) {
-        return clientBean.findByData(client.getName(), 
-                                     client.getLocation(), 
-                                     client.getEmail(), 
-                                     client.getPhone());
+    public Client onGet(int id) {
+        return clientBean.findById(id);
     }
 
 }

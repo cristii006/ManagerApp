@@ -5,7 +5,7 @@
  */
 package ro.uvt.thesis.logic;
 
-import java.util.GregorianCalendar;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -22,10 +22,10 @@ import ro.uvt.thesis.persistance.Shipment;
 @Stateless
 public class ShipmentBean {
     
-    @PersistenceContext(unitName = "shipment")
+    @PersistenceContext(unitName = "shipments")
     private EntityManager manager;
     
-    public Shipment findByData(String departurePlace,String arrivalPlace,GregorianCalendar finaldate,String transportType,int load){
+    public Shipment findByData(String departurePlace,String arrivalPlace,Date finaldate,String transportType,int load){
        Query q = manager.createNativeQuery("SELECT * FROM shipment WHERE departurePlace=? AND "
                                                        + "arrivalPlace=? AND"
                                                        + "finaldate=?    AND "
