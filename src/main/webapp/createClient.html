@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clients</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form id="form">
+        <label>Name:</label>
+        <input name="name" type="text" />
+        <br/>
+
+        <label>Email:</label>
+        <input name="email" type="text" />
+        <br/>
+
+        <label>Location:</label>
+        <input name="location" type="text" />
+        <br/>
+
+        <label>Phone:</label>
+        <input name="phone" type="text" />
+        <br/>
+
+        <input type="submit" value="create" />
+    </form>
+    <label id="c"></label>
+    <script>
+        $("#form").submit(function (event) {
+            var inputs = $("#form :input");
+            let formData = $.map(inputs, function (n, i) {
+                return { Key: n.name, Value: $(n).val() };
+            });
+            console.log(formData);
+            $("#c").html(formData);
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/ManagerApp/resources/clients/create",
+                data: formData,
+                dataType: "json",
+                contentType: "application/json"
+            });
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
