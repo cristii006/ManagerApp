@@ -12,19 +12,19 @@
 <body>
     <form id="form">
         <label>Name:</label>
-        <input name="name" type="text" />
+        <input id="name" type="text" />
         <br/>
 
         <label>Email:</label>
-        <input name="email" type="text" />
+        <input id="email" type="text" />
         <br/>
 
         <label>Location:</label>
-        <input name="location" type="text" />
+        <input id="location" type="text" />
         <br/>
 
         <label>Phone:</label>
-        <input name="phone" type="text" />
+        <input id="phone" type="text" />
         <br/>
 
         <input type="submit" value="create" />
@@ -32,19 +32,20 @@
     <label id="c"></label>
     <script>
         $("#form").submit(function (event) {
-            var inputs = $("#form :input");
-            let formData = $.map(inputs, function (n, i) {
-                return { Key: n.name, Value: $(n).val() };
-            });
-            console.log(formData);
-            $("#c").html(formData);
-
+            var obj = {};
+            obj['name'] = $('#name').val();
+            obj['email'] = $('#email').val();
+            obj['phone'] = $('#phone').val();
+            obj['location'] = $('#location').val();
+            
+            var jsonObj = JSON.stringify(obj);
+            console.log(jsonObj);
             $.ajax({
                 type: "POST",
                 url: "http://localhost:8080/ManagerApp/resources/clients/create",
-                data: formData,
-                dataType: "json",
-                contentType: "application/json"
+                data: jsonObj.toString(),
+                contentType: "application/json",
+                dataType: "json"
             });
             event.preventDefault();
         });
