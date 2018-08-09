@@ -5,15 +5,15 @@
  */
 package ro.uvt.thesis.rest;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import ro.uvt.thesis.logic.ShipmentBean;
 import ro.uvt.thesis.persistance.Shipment;
 
@@ -21,45 +21,46 @@ import ro.uvt.thesis.persistance.Shipment;
  *
  * @author Cristian
  */
-@Path("shipment")
+@Path("shipments")
 public class ShipmentApi {
 
     @Inject
     ShipmentBean shipmentBean;
-
-    @POST
-    @Path("/departure_place/{departurePlace}/arrival_place/"
-            + "{arrivalPlace}/final_date/{finaldate}/transport_type/{transportType}/load/{load}")
-    public String onPost(@PathParam("departurePlace") String departurePlace,
-            @PathParam("arrivalPlace") String arrivalPlace,
-            @PathParam("finaldate") String finaldate,
-            @PathParam("transportType") String transportType,
-            @PathParam("load") int load) {
-        Shipment shipment;
-        try {
-            shipment = new Shipment(departurePlace, arrivalPlace, new SimpleDateFormat("dd/MM/yyyy").parse(finaldate), transportType, load);
-            shipmentBean.addNewShipment(shipment);
-            return "Shipment Added!";
-        } catch (ParseException ex) {
-            Logger.getLogger(ShipmentApi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        throw new RuntimeException("Error on getting Shipment");
-    }
-
+    
     @GET
-    @Path("/departure_place/{departurePlace}/arrival_place/"
-            + "{arrivalPlace}/final_date/{finaldate}/transport_type/{transportType}/load/{load}")
-    public String onGet(@PathParam("departurePlace") String departurePlace,
-            @PathParam("arrivalPlace") String arrivalPlace,
-            @PathParam("finaldate") String finaldate,
-            @PathParam("transportType") String transportType,
-            @PathParam("load") int load) {
-        try {
-            return shipmentBean.findByData(departurePlace, arrivalPlace, new SimpleDateFormat("dd/MM/yyyy").parse(finaldate), transportType, load).toString();
-        } catch (ParseException ex) {
-            Logger.getLogger(ShipmentApi.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        throw new RuntimeException("error onGET shipments");
+    @Path("retrieveAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Shipment> getAll(){
+        return shipmentBean.findAll();
     }
-
+    
+   
+    @GET
+    @Path("retrieveById/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Shipment getById(@PathParam("id") long id){
+        Shipment s =  shipmentBean.findById(id);
+        if(s == null){
+            throw new RuntimeException("Shipment does not exist!");
+        }
+        return s;
+    }
+    
+    @GET
+    @Path("removeById/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String removeById(@PathParam("id") long id){
+        shipmentBean.removeById(id);
+        return "Shipment removed!";
+    }
+  
+    
+    @POST
+    @Path("update")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String update(Shipment s){
+        shipmentBean.update(s);
+        return "Shipment updated!";
+    }
+    
 }

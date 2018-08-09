@@ -21,7 +21,7 @@ import ro.uvt.thesis.persistance.Client;
  *
  * @author Cristian
  */
-@Path("client")
+@Path("clients")
 public class ClientApi {
 
     @Inject
@@ -39,14 +39,14 @@ public class ClientApi {
     @GET
     @Path("retrieveAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Client> onGet() {
+    public List<Client> retrieveAll() {
         return clientBean.findAll();
     }
 
     @GET
     @Path("retrieveById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Client onGet(@PathParam("id") long id) {
+    public Client retrieveById(@PathParam("id") long id) {
         Client c =  clientBean.findById(id);
         if(c == null){
             throw new RuntimeException("Client does not exist, id not found!");

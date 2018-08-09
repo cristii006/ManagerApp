@@ -25,21 +25,6 @@ public class ShipmentBean {
     @PersistenceContext(unitName = "shipments")
     private EntityManager manager;
     
-    public Shipment findByData(String departurePlace,String arrivalPlace,Date finaldate,String transportType,int load){
-       Query q = manager.createNativeQuery("SELECT * FROM shipment WHERE departurePlace=? AND "
-                                                       + "arrivalPlace=? AND"
-                                                       + "finaldate=?    AND "
-                                                       + "transportType=?    AND"
-                                                       + "load=?",Shipment.class );
-       
-       q.setParameter(1, departurePlace);
-       q.setParameter(2, arrivalPlace);
-       q.setParameter(3, finaldate);
-       q.setParameter(4, transportType);
-       q.setParameter(5, load);
-       
-       return (Shipment) q.getSingleResult();
-    }
     
     public void addNewShipment(Shipment shipment){
         manager.persist(shipment);
@@ -62,7 +47,7 @@ public class ShipmentBean {
     }
     
     public List<Shipment> findAll(){
-        return manager.createQuery("SELECT t FROM" + Shipment.class.getSimpleName()+ "t").getResultList();
+        return manager.createQuery("SELECT t FROM " + Shipment.class.getSimpleName()+ " t").getResultList();
     }
     
     public Shipment findById(long id){
