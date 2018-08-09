@@ -10,14 +10,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  *
  * @author Cristian
  */
-@Entity
-@Table(schema = "vehicles", name = "vehicle")
+@Entity(name = "vehicle")
 public class Vehicle implements Serializable {
 
     private static final long serialVersionUID = 1L;

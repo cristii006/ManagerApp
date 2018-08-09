@@ -60,8 +60,7 @@ public class ClientApi {
     @Produces(MediaType.APPLICATION_JSON)
     public String deleteById(@PathParam("id") long id) {
         clientBean.removeById(id);
-        
-        return "Client with id " + id + " was successfully delteted";
+        return "Client with id " + id + " was successfully deleted";
     }
     
     

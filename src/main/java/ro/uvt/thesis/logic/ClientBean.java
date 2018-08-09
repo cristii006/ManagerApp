@@ -56,7 +56,7 @@ public class ClientBean {
     }
     
     public List<Client> findAll(){
-        return manager.createQuery("SELECT t FROM client" + " t").getResultList();
+        return manager.createQuery("SELECT t FROM client t").getResultList();
     }
     
     public Client findById(long id){
