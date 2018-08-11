@@ -43,8 +43,14 @@ public class ClientBean {
         manager.remove(manager.find(Client.class, id));
     }
     
-    public void update(Client client){
-        manager.persist(manager.merge(client));
+    public void update(Client client, long id){
+       Client c =  manager.find(Client.class, id);
+       c.setEmail(client.getEmail());
+       c.setLocation(client.getLocation());
+       c.setPhone(client.getPhone());
+       c.setName(client.getName());
+       
+       manager.merge(c);
     }
     
     public int count() {

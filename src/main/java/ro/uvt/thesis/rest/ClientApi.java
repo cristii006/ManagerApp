@@ -66,8 +66,10 @@ public class ClientApi {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String updateById(Client client) {
-        clientBean.update(client);
+    @Path("updateById/{id}")
+    public String updateById(Client client,
+                             @PathParam("id") long id) {
+        clientBean.update(client,id);
         return "Client was succesfully updated!";
     }
 }
