@@ -6,10 +6,13 @@
 package ro.uvt.thesis.rest;
 
 import javax.inject.Inject;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import ro.uvt.thesis.logic.VehicleBean;
 import ro.uvt.thesis.persistance.Vehicle;
 /**
@@ -23,26 +26,40 @@ public class VehicleApi {
     VehicleBean vehicleBean;
 
     @POST
-    @Path("/licence_plate/{licencePlate}/vehicle_type/"
-            + "{vehicleType}/maximum_capacity/{maximumCapacity}/active/{active}")
-    public String onPost(@PathParam("licencePlate") String licencePlate,
-                         @PathParam("vehicleType") String vehicleType,
-                         @PathParam("maximumCapacity") int maximumCapacity,
-                         @PathParam("active") boolean active) {
-        Vehicle vehicle = new Vehicle(licencePlate, vehicleType, maximumCapacity, active);
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String onPost(Vehicle vehicle) {
         vehicleBean.addNewVehicle(vehicle);
         return "Vehicle Added!";
     }
     
     
     @GET
-    @Path("/licence_plate/{licencePlate}/vehicle_type/"
-            + "{vehicleType}/maximum_capacity/{maximumCapacity}/active/{active}")
-    public String onGet(@PathParam("licencePlate") String licencePlate,
-                         @PathParam("vehicleType") String vehicleType,
-                         @PathParam("maximumCapacity") int maximumCapacity,
-                         @PathParam("active") boolean active) {
-        return vehicleBean.findByData(licencePlate, vehicleType, maximumCapacity, active).toString();
+    @Path("retrieveById/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Vehicle retrieveById(@PathParam("id") long id) {
+        Vehicle v =  vehicleBean.findById(id);
+        if(v == null){
+            throw new RuntimeException("Vehicle does not exist, id not found!");
+        }
+        return v;
+    }
+    
+    @GET
+    @Path("deleteById/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String deleteById(@PathParam("id") long id) {
+        vehicleBean.removeById(id);
+        return "Vehicle with id " + id + " was successfully deleted";
+    }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("updateById/{id}")
+    public String updateById(Vehicle vehicle,
+                             @PathParam("id") long id) {
+        vehicleBean.update(vehicle, id);
+        return "Vehicle was succesfully updated!";
     }
 
 }

@@ -34,8 +34,14 @@ public class ShipmentBean {
         manager.remove(manager.find(Shipment.class, id));
     }
     
-    public void update(Shipment shipment){
-        manager.persist(manager.merge(shipment));
+    public void update(Shipment shipment, long id){
+       Shipment s =  manager.find(Shipment.class, id);
+       s.setDeparturePlace(shipment.getDeparturePlace());
+       s.setArrivalPlace(shipment.getArrivalPlace());
+       s.setFinaldate(shipment.getFinaldate());
+       s.setTransportType(shipment.getTransportType());
+       s.setLoad(shipment.getLoad());
+       manager.merge(s);
     }
     
     public int count() {
@@ -47,7 +53,7 @@ public class ShipmentBean {
     }
     
     public List<Shipment> findAll(){
-        return manager.createQuery("SELECT t FROM " + Shipment.class.getSimpleName()+ " t").getResultList();
+        return manager.createQuery("SELECT t FROM shipment t").getResultList();
     }
     
     public Shipment findById(long id){

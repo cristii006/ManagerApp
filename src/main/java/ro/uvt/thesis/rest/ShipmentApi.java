@@ -27,10 +27,18 @@ public class ShipmentApi {
     @Inject
     ShipmentBean shipmentBean;
     
+    @POST
+    @Path("create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String onPost(Shipment shipment) {
+        shipmentBean.addNewShipment(shipment);
+        return "Shipment Added!";
+    }
+    
     @GET
     @Path("retrieveAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Shipment> getAll(){
+    public List<Shipment> retrieveAll(){
         return shipmentBean.findAll();
     }
     
@@ -47,20 +55,21 @@ public class ShipmentApi {
     }
     
     @GET
-    @Path("removeById/{id}")
+    @Path("deleteById/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public String removeById(@PathParam("id") long id){
         shipmentBean.removeById(id);
-        return "Shipment removed!";
+        return "Shipment with id" + id + " was successfully deleted!";
     }
   
     
     @POST
-    @Path("update")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String update(Shipment s){
-        shipmentBean.update(s);
-        return "Shipment updated!";
+    @Path("updateById/{id}")
+    public String updateById(Shipment shipment,
+            @PathParam("id") long id){
+        shipmentBean.update(shipment, id);
+        return "Shipment was successfully updated!";
     }
     
 }

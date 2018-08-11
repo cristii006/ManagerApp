@@ -48,6 +48,14 @@ public class Shipment implements Serializable {
         this.transportType = transportType;
         this.load = load;
     }
+        
+    public String getDeparturePlace(){
+        return departurePlace;
+    }
+    
+    public void setDeparturePlace(String departurePlace){
+        this.departurePlace = departurePlace;
+    }
 
     public String getArrivalPlace() {
         return arrivalPlace;

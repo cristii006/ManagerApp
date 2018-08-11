@@ -22,16 +22,10 @@ public class VehicleBean {
     @PersistenceContext(unitName = "vehicles")
     private EntityManager manager;
     
-    public Vehicle findByData(String licencePlate, String vehicleType, int maximumCapacity, boolean active){
-       Query q = manager.createNativeQuery("SELECT * FROM vehicle WHERE licencePlate=? AND "
-                                                       + "vehicleType=? AND"
-                                                       + "maximumCapacity=?    AND "
-                                                       + "active=?",Vehicle.class );
+    public Vehicle findById(int id){
+       Query q = manager.createQuery("SELECT v FROM vehicle v WHERE v.id = :id ");
        
-       q.setParameter(1, licencePlate);
-       q.setParameter(2, vehicleType);
-       q.setParameter(3, maximumCapacity);
-       q.setParameter(4, active);
+       q.setParameter("id", id);
        
        return (Vehicle) q.getSingleResult();
     }
@@ -44,8 +38,14 @@ public class VehicleBean {
         manager.remove(manager.find(Vehicle.class, id));
     }
     
-    public void update(Vehicle vehicle){
-        manager.persist(manager.merge(vehicle));
+    public void update(Vehicle vehicle, long id){
+       Vehicle v =  manager.find(Vehicle.class, id);
+       v.setLicencePlate(vehicle.getLicencePlate());
+       v.setVehicleType(vehicle.getVehicleType());
+       v.setMaximumCapacity(vehicle.getMaximumCapacity());
+       v.setActive(vehicle.isActive());
+       
+       manager.merge(v);
     }
     
     public int count() {
@@ -57,7 +57,7 @@ public class VehicleBean {
     }
     
     public List<Vehicle> findAll(){
-        return manager.createQuery("SELECT t FROM" + Vehicle.class.getSimpleName()+ "t").getResultList();
+        return manager.createQuery("SELECT t FROM vehicle t").getResultList();
     }
     
     public Vehicle findById(long id){
