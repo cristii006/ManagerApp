@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clients - Delete</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+    <form id="form">
+        
+        <label>Shipment ID:</label>
+        <input id="id" type="text" />
+        <br/>
+        <input type="submit" value="delete" />
+    </form>
+    <label id="c"></label>
+    <script>
+        $("#form").submit(function (event) {
+            var obj = {};
+            obj['departurePlace'] = $('#departurePlace').val();
+            obj['arrivalPlace'] = $('#arrivalPlace').val();
+            obj['finaldate'] = $('#finaldate').val();
+            obj['transportType'] = $('#transportType').val();
+            obj['load'] = $('#load').val();
+            
+            var jsonObj = JSON.stringify(obj);
+            const URL = "http://localhost:8080/ManagerApp/resources/shipments/deleteById/" + $("#id").val(); 
+            console.log(jsonObj);
+            $.ajax({
+                type: "GET",
+                url: URL,
+                data: jsonObj.toString(),
+                contentType: "application/json",
+                dataType: "json"
+            });
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
