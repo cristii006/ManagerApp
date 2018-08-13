@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -34,6 +36,8 @@ public class Shipment implements Serializable {
     
     String departurePlace;
     String arrivalPlace;
+    
+    @Temporal(TemporalType.DATE)
     Date finaldate;
     String transportType;
     int load;
@@ -90,6 +94,15 @@ public class Shipment implements Serializable {
     public void setLoad(int load) {
         this.load = load;
     }
+
+    public long getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(long client_id) {
+        this.client_id = client_id;
+    }
+    
     
     
     

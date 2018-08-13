@@ -42,7 +42,8 @@
             console.log(jsonObj);
             $.ajax({
                 type: "POST",
-                url: "http://localhost:8080/ManagerApp/resources/clients/create",
+                url: "http://localhost:8080/Thesis/resources/clients/create",
+                      
                 data: jsonObj.toString(),
                 contentType: "application/json",
                 dataType: "json"

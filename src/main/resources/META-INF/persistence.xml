@@ -3,6 +3,7 @@
   <persistence-unit name="clients" transaction-type="JTA">
     <jta-data-source>clients</jta-data-source>
     <class>ro.uvt.thesis.persistance.Client</class>
+    <class>ro.uvt.thesis.persistance.Shipment</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
@@ -11,6 +12,7 @@
   <persistence-unit name="shipments" transaction-type="JTA">
     <jta-data-source>shipments</jta-data-source>
     <class>ro.uvt.thesis.persistance.Shipment</class>
+    <class>ro.uvt.thesis.persistance.Client</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
