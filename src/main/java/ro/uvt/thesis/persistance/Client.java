@@ -6,12 +6,15 @@
 package ro.uvt.thesis.persistance;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -44,6 +47,10 @@ public class Client implements Serializable {
     String location;
     String email;
     String phone;
+    
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @JoinColumn(name = "client_id")
+    List<Shipment> shipments;
 
     public Client(String name, String location, String email, String phone) {
         this.name = name;

@@ -37,16 +37,18 @@ public class Shipment implements Serializable {
     Date finaldate;
     String transportType;
     int load;
+    long client_id;
 
     public Shipment() {
     }
 
-    public Shipment(String departurePlace, String arrivalPlace, Date finaldate, String transportType, int load) {
+    public Shipment(String departurePlace, String arrivalPlace, Date finaldate, String transportType, int load, long client_id) {
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.finaldate = finaldate;
         this.transportType = transportType;
         this.load = load;
+        this.client_id = client_id;
     }
         
     public String getDeparturePlace(){
@@ -88,6 +90,8 @@ public class Shipment implements Serializable {
     public void setLoad(int load) {
         this.load = load;
     }
+    
+    
     
     @Override
     public int hashCode() {
