@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang =en>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        
+        <title>Client Home</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            html, body {
+                height: 100%;
+            }
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                min-height:100%;
+            }
+
+            .navbar {
+                overflow: visible;
+                background-color: #333;
+            }
+
+            .navbar a {
+                float: left;
+                color: #f2f2f2;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                font-size: 17px;
+            }
+
+            .navbar a:hover {
+                background-color: #ddd;
+                color: black;
+
+            }
+
+            .navbar a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+        </style>
+
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Manager App</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Future work<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About Us</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarNavDropdownMenuLink2" role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Client</a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">                          
+                            <a class="dropdown-item" href="deleteClient.html">Delete shipment</a>
+                            <a class="dropdown-item" href="updateClient.html">Update client</a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Shipments
+                        </a>
+                        <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                            <a class="dropdown-item" href="createShipment.html">Create shimpment</a>
+                            <a class="dropdown-item" href="deleteShipment.html">Delete shipment</a>
+                            <a class="dropdown-item" href="updateShipment.html">Update shipment</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </body>
+</html>

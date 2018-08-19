@@ -1,60 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clients</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <title>Update Client</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            body {
+                background-image: url(CarCuBoiTrecandUnVad.JPG);
+                background-size: cover;               
+            }
+            div {
+                margin-left: 200px;
+                margin-right: 400px;
+            }
+        </style>
+    </head>
 
-<body>
-    <form id="form">
-        <label>Name:</label>
-        <input id="name" type="text" />
-        <br/>
+    <body>
+        <form>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter name">
+                <small class="form-text text-muted">Never share your name with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" id="location" placeholder="Location">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="text" class="form-control" id="phone" placeholder="Phone">
+            </div>
+            <div class="invisible">
+                <div class="form-group">
+                    <label for="phone">Client ID:</label>
+                    <input type="text" class="form-control" id="id">
+                </div>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success" value="update">Submit</button>
+            </div>
+        </form>
+        <label id="c"></label>
+        <script>
+            $("#form").submit(function (event) {
+                var obj = {};
+                obj['name'] = $('#name').val();
+                obj['email'] = $('#email').val();
+                obj['phone'] = $('#phone').val();
+                obj['location'] = $('#location').val();
 
-        <label>Email:</label>
-        <input id="email" type="text" />
-        <br/>
-
-        <label>Location:</label>
-        <input id="location" type="text" />
-        <br/>
-
-        <label>Phone:</label>
-        <input id="phone" type="text" />
-        <br/>
-        
-        
-        <label>Client ID:</label>
-        <input id="id" type="text" />
-        <br/>
-        <input type="submit" value="update" />
-    </form>
-    <label id="c"></label>
-    <script>
-        $("#form").submit(function (event) {
-            var obj = {};
-            obj['name'] = $('#name').val();
-            obj['email'] = $('#email').val();
-            obj['phone'] = $('#phone').val();
-            obj['location'] = $('#location').val();
-            
-            var jsonObj = JSON.stringify(obj);
-            const URL = "http://localhost:8080/ManagerApp/resources/clients/updateById/" + $("#id").val(); 
-            console.log(jsonObj);
-            $.ajax({
-                type: "POST",
-                url: URL,
-                data: jsonObj.toString(),
-                contentType: "application/json",
-                dataType: "json"
+                var jsonObj = JSON.stringify(obj);
+                const URL = "http://localhost:8080/ManagerApp/resources/clients/updateById/" + $("#id").val();
+                console.log(jsonObj);
+                $.ajax({
+                    type: "POST",
+                    url: URL,
+                    data: jsonObj.toString(),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+                event.preventDefault();
             });
-            event.preventDefault();
-        });
-    </script>
-</body>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </body>
 
 </html>
