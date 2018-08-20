@@ -1,44 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Clients - Delete</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <title>Clients - Delete</title>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            body {
+                background-image: url(CarCuBoiPeCaleDeDimineata.jpg);
+                background-size: cover;               
+            }
+            div {
+                margin-left: 400px;
+                margin-right: 500px;
+            }
+            #card .card-block {
+                margin: 0px;
+            }
+            #card .form-group {
+                margin-left: 100px;
+                margin-right: 200px;
+            }
+            #button {
+                margin-left: 100px;
+            }
+        </style>
+    </head>
 
-<body>
-    <form id="form">
-        
-        <label>Client ID:</label>
-        <input id="id" type="text" />
-        <br/>
-        <input type="submit" value="delete" />
-    </form>
-    <label id="c"></label>
-    <script>
-        $("#form").submit(function (event) {
-            var obj = {};
-            obj['name'] = $('#name').val();
-            obj['email'] = $('#email').val();
-            obj['phone'] = $('#phone').val();
-            obj['location'] = $('#location').val();
-            
-            var jsonObj = JSON.stringify(obj);
-            const URL = "http://localhost:8080/ManagerApp/resources/clients/deleteById/" + $("#id").val(); 
-            console.log(jsonObj);
-            $.ajax({
-                type: "GET",
-                url: URL,
-                data: jsonObj.toString(),
-                contentType: "application/json",
-                dataType: "json"
+    <body>
+        <div class="card" id="card">
+            <div class="card-block">
+                <form id="form">
+                    <div class="form-group">
+                        <label for="text">Client ID:</label>
+                        <input type="number" class="form-control" id="id" placeholder="Enter client's Id you want to erase">
+                    </div>
+                    <div id='button'>
+                        <button type="button" class="btn btn-danger" value="delete">Delete</button>
+                    </div>                   
+                </form>
+            </div>
+        </div>
+        <label id="c"></label>
+        <script>
+            $("#form").submit(function (event) {
+                var obj = {};
+                obj['name'] = $('#name').val();
+                obj['email'] = $('#email').val();
+                obj['phone'] = $('#phone').val();
+                obj['location'] = $('#location').val();
+
+                var jsonObj = JSON.stringify(obj);
+                const URL = "http://localhost:8080/ManagerApp/resources/clients/deleteById/" + $("#id").val();
+                console.log(jsonObj);
+                $.ajax({
+                    type: "GET",
+                    url: URL,
+                    data: jsonObj.toString(),
+                    contentType: "application/json",
+                    dataType: "json"
+                });
+                event.preventDefault();
             });
-            event.preventDefault();
-        });
-    </script>
-</body>
+        </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    </body>
 
 </html>
