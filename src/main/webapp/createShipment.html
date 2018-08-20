@@ -5,39 +5,68 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Shipments</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" crossorigin="anonymous">
+        <title>Create Shipment</title>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <style>
+            body {
+                background-image: url(car-boi.jpg);
+                background-size: cover;               
+            }
+            div {
+                margin-left: 400px;
+                margin-right: 500px;
+            }
+            #card .card-block {
+                margin: 0px;
+            }
+            #card .form-group {
+                margin-left: 100px;
+                margin-right: 200px;
+            }
+            #button {
+                margin-left: 100px;
+            }
+        </style>
     </head>
 
     <body>
-        <form id="form">
-            <label>Departure Place:</label>
-            <input id="departurePlace" type="text" />
-            <br/>
-
-            <label>Arrival Place:</label>
-            <input id="arrivalPlace" type="text" />
-            <br/>
-
-            <label>Final Date:</label>
-            <input id="finaldate" type="date" />
-            <br/>
-
-            <label>Transport type:</label>
-            <input id="transportType" type="text" />
-            <br/>
-
-            <label>Load:</label>
-            <input id="load" type="number" />
-            <br/>
-
-
-            <label>Client ID: </label>
-            <input id="client" type="number" />
-            <br/>
-
-            <input type="submit" value="create" />
-        </form>
+        <div class="card" id="card">
+            <div class="card-block">
+                <form id="form">
+                    <div class="form-group">
+                        <label for="departurePlace">Departure Place:</label>
+                        <input type="text" class="form-control" id="departurePlace" 
+                               placeholder="Enter departure place">     
+                    </div>
+                    <div class="form-group">
+                        <label for="arrivalPlace">Arrival Place:</label>
+                        <input type="text" class="form-control" id="arrivalPlace" placeholder="Enter arrival place">
+                    </div>
+                    <div class="form-group">
+                        <label for="finaldate">Final Date:</label>
+                        <input type="date" class="form-control" id="finaldate">
+                    </div>
+                    <div class="form-group">
+                        <label for="transportType">Transport type:</label>
+                        <input type="text" class="form-control" id="transportType" placeholder="Transport type">
+                    </div>
+                    <div class="form-group">
+                        <label for="load">Load(t):</label>
+                        <input type="number" class="form-control" id="load" placeholder="Load">
+                    </div>
+                    <div class="invisible">
+                        <div class="form-group">
+                            <label for="id">Shipment ID:</label>
+                            <input type="text" class="form-control" id="id">
+                        </div>
+                    </div>
+                    <div id="button">
+                        <button type="button" class="btn btn-success" value="create">Create</button>
+                    </div>
+                </form>   
+            </div>
+        </div> 
         <label id="c"></label>
         <script>
             $("#form").submit(function (event) {
@@ -61,6 +90,9 @@
                 event.preventDefault();
             });
         </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </body>
 
 </html>

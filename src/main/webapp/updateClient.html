@@ -14,41 +14,55 @@
                 background-size: cover;               
             }
             div {
-                margin-left: 200px;
-                margin-right: 400px;
+                margin-left: 400px;
+                margin-right: 500px;
+            }
+            #card .card-block {
+                margin: 0px;
+            }
+            #card .form-group {
+                margin-left: 100px;
+                margin-right: 200px;
+            }
+            #button {
+                margin-left: 100px;
             }
         </style>
     </head>
 
     <body>
-        <form>
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter name">
-                <small class="form-text text-muted">Never share your name with anyone else.</small>
+        <div class="card" id="card">
+            <div class="card-block">
+                <form id="form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter name">
+                        <small class="form-text text-muted">Never share your name with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email address:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location:</label>
+                        <input type="text" class="form-control" id="location" placeholder="Location">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone">
+                    </div>
+                    <div class="invisible">
+                        <div class="form-group">
+                            <label for="id">Client ID:</label>
+                            <input type="text" class="form-control" id="id">
+                        </div>
+                    </div>
+                    <div id="button">
+                        <button type="button" class="btn btn-success" value="update">Submit</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
-            </div>
-            <div class="form-group">
-                <label for="location">Location:</label>
-                <input type="text" class="form-control" id="location" placeholder="Location">
-            </div>
-            <div class="form-group">
-                <label for="phone">Phone:</label>
-                <input type="text" class="form-control" id="phone" placeholder="Phone">
-            </div>
-            <div class="invisible">
-                <div class="form-group">
-                    <label for="id">Client ID:</label>
-                    <input type="text" class="form-control" id="id">
-                </div>
-            </div>
-            <div>
-                <button type="button" class="btn btn-success" value="update">Submit</button>
-            </div>
-        </form>
+        </div>
         <label id="c"></label>
         <script>
             $("#form").submit(function (event) {
