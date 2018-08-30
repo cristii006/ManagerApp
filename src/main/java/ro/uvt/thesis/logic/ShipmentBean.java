@@ -40,7 +40,7 @@ public class ShipmentBean {
        s.setArrivalPlace(shipment.getArrivalPlace());
        s.setFinaldate(shipment.getFinaldate());
        s.setTransportType(shipment.getTransportType());
-       s.setLoad(shipment.getLoad());
+       s.setCapacity(shipment.getCapacity());
        manager.merge(s);
     }
     

@@ -38,7 +38,7 @@ public class Shipment implements Serializable {
     //@Temporal(TemporalType.DATE)
     Date finaldate;
     String transportType;
-    int load;
+    int capacity;
     long client_id;
 
     public Shipment() {
@@ -49,7 +49,7 @@ public class Shipment implements Serializable {
         this.arrivalPlace = arrivalPlace;
         this.finaldate = finaldate;
         this.transportType = transportType;
-        this.load = load;
+        this.capacity = load;
         this.client_id = client_id;
     }
         
@@ -85,12 +85,12 @@ public class Shipment implements Serializable {
         this.transportType = transportType;
     }
 
-    public int getLoad() {
-        return load;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setLoad(int load) {
-        this.load = load;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
     public long getClient_id() {
