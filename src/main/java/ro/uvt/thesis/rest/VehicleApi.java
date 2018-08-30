@@ -5,6 +5,7 @@
  */
 package ro.uvt.thesis.rest;
 
+import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -33,6 +34,12 @@ public class VehicleApi {
         return "Vehicle Added!";
     }
     
+    @GET
+    @Path("retrieveAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Vehicle> retrieveAll() {
+        return vehicleBean.findAll();
+    }
     
     @GET
     @Path("retrieveById/{id}")
