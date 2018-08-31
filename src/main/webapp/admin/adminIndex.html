@@ -14,6 +14,7 @@ and open the template in the editor.
 
         <title>Administrator Home</title>
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
         <style>
             html, body {
                 height: 100%;
@@ -22,7 +23,7 @@ and open the template in the editor.
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
                 min-height:100%;
-                background-image: url(CarCuBoi4.jpg);
+                background-image: url(../user/CarCuBoi4.jpg);
                 background-size: cover;
 
             }
@@ -64,18 +65,18 @@ and open the template in the editor.
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="futureWork.html">Future work<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="../user/futureWork.html">Future work<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="aboutUs.html">About Us</a> 
+                        <a class="nav-link" href="../user/aboutUs.html">About Us</a> 
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarNavDropdownMenuLink" role="button" 
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Client</a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="createClient.html">Create client</a>
-                            <a class="dropdown-item" href="deleteClient.html">Delete client</a>
-                            <a class="dropdown-item" href="updateClient.html">Update client</a>
+                            <a class="dropdown-item" href="../user/createClient.html">Create client</a>
+                            <a class="dropdown-item" href="../user/deleteClient.html">Delete client</a>
+                            <a class="dropdown-item" href="../user/updateClient.html">Update client</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -84,9 +85,9 @@ and open the template in the editor.
                             Shipments
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink2">
-                            <a class="dropdown-item" href="createShipment.html">Create shipment</a>
-                            <a class="dropdown-item" href="deleteShipment.html">Delete shipment</a>
-                            <a class="dropdown-item" href="updateShipment.html">Update shipment</a>
+                            <a class="dropdown-item" href="../user/createShipment.html">Create shipment</a>
+                            <a class="dropdown-item" href="../user/deleteShipment.html">Delete shipment</a>
+                            <a class="dropdown-item" href="../user/updateShipment.html">Update shipment</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -103,17 +104,34 @@ and open the template in the editor.
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item" id="button">
-                        <a class="btn btn-info btn-lg" href="#">
+                        <a  onclick="logout()" class="btn btn-info btn-lg">
                             <span class="glyphicon glyphicon-log-out"></span>
-                             Log Out
+                            Log Out
                         </a>
                     </li>
                 </ul>
             </div>
         </nav>
-        
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+        <script>
+                    function logout() {
+                        $.ajax({
+                            url: "http://localhost:8080/Thesis/resources/login/logout",
+                            type: 'GET',
+                            success: function (data, textStatus, jqXHR) {
+                                window.location.href = "http://localhost:8080/Thesis/login.html";
+                            }
+                        });
+                    }
+        </script>
+        
+        <script>
+            document.getElementById("aboutUs").onclick = function () {
+                location.href = "aboutUs.html";
+            };
+        </script>
     </body>
 </html> 

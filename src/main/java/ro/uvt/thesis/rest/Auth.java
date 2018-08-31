@@ -5,10 +5,14 @@
  */
 package ro.uvt.thesis.rest;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.SecurityContext;
 
 /**
  *
@@ -17,11 +21,20 @@ import javax.ws.rs.core.MediaType;
 @Path("login")
 public class Auth {
     
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void auth(Credentials cred){
-        
-    }
+    @Context
+    SecurityContext securityContext;
+   
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean auth(){
+        return securityContext.isUserInRole("admin");
+    }
+
+    @GET
+    @Path("logout")
+    public void deauth(@Context HttpServletRequest request) throws ServletException{
+        request.logout();
+    }    
 }
 

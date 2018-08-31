@@ -9,6 +9,22 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script>
+           window.onload = function (){
+               const role = $.ajax({
+                    url: "http://localhost:8080/Thesis/resources/login",
+                    type: 'GET',
+                    success: function (data, textStatus, jqXHR) {
+                            if(data == true){
+                                window.location.href = "/Thesis/admin/adminIndex.html";
+                            }else{
+                                window.location.href = "/Thesis/user/clientIndex.html";
+                            }
+                    }
+               })
+           }
+        </script>
     </head>
     <body>
         <div>TODO write content</div>
