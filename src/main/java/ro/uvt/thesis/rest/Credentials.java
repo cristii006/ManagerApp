@@ -5,10 +5,6 @@
  */
 package ro.uvt.thesis.rest;
 
-/**
- *
- * @author dan
- */
 public class Credentials {
 
     private String username;

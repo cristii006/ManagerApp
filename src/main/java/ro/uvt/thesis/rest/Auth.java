@@ -14,10 +14,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 
-/**
- *
- * @author dan
- */
 @Path("login")
 public class Auth {
     
