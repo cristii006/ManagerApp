@@ -4,11 +4,10 @@ $('document').ready(function(){
     $.ajax({
         type: 'GET',
         url: 'http://localhost:8080/Thesis/resources/clients/retrieveAll',
-        accepts: 'application/json',
         success: function(data){
             data.forEach(element => {
                 const option = document.createElement("option");
-                option.innerHTML = element.id;
+                option.innerHTML = element.id+" "+element.name;
                 select.appendChild(option);
             });
         }
