@@ -30,7 +30,9 @@ public class VehicleApi {
     @Path("create")
     @Consumes(MediaType.APPLICATION_JSON)
     public String onPost(Vehicle vehicle) {
-        vehicleBean.addNewVehicle(vehicle);
+        Vehicle v = new Vehicle(vehicle.getLicencePlate(),vehicle.getVehicleType(),
+                                vehicle.getMaximumCapacity(),vehicle.isActive());
+        vehicleBean.addNewVehicle(v);
         return "Vehicle Added!";
     }
     
