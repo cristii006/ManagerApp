@@ -21,7 +21,7 @@ public class Shipment implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public Long getId() {
@@ -44,12 +44,12 @@ public class Shipment implements Serializable {
     public Shipment() {
     }
 
-    public Shipment(String departurePlace, String arrivalPlace, Date finaldate, String transportType, int load, long client_id) {
+    public Shipment(String departurePlace, String arrivalPlace, Date finaldate, String transportType, int capacity, long client_id) {
         this.departurePlace = departurePlace;
         this.arrivalPlace = arrivalPlace;
         this.finaldate = finaldate;
         this.transportType = transportType;
-        this.capacity = load;
+        this.capacity = capacity;
         this.client_id = client_id;
     }
         

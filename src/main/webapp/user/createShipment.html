@@ -52,16 +52,16 @@
                         <input type="text" class="form-control" id="transportType" placeholder="Transport type">
                     </div>
                     <div class="form-group">
-                        <label for="load">Load(t):</label>
-                        <input type="number" class="form-control" id="load" placeholder="Load">
+                        <label for="capacity">Capacity(t):</label>
+                        <input type="number" class="form-control" id="capacity" placeholder="Capacity">
                     </div>
                     <div class="form-group">
-                        <label for="id">Look for client's Id to which to deliver shipment</label>
+                        <label for="client_id_select">Look for client's Id to which to deliver shipment</label>
                         <select id="client_id_select">                           
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="client_id_select">Client Id:</label>
+                        <label for="client_id">Client Id:</label>
                         <input type="number" class="form-control" id="client_id" placeholder="Client ID">
                     </div>
                     <div id="button">
@@ -76,10 +76,10 @@
                 var obj = {};
                 obj['departurePlace'] = $('#departurePlace').val();
                 obj['arrivalPlace'] = $('#arrivalPlace').val();
-                obj['finaldate'] = $('#finaldate').val();
+                obj['finaldate'] = new Date($('#finaldate').val());
                 obj['transportType'] = $('#transportType').val();
-                obj['load'] = $('#load').val();
-                obj['client_id'] = $('#client_id')[0].value;
+                obj['capacity'] = Number.parseInt($('#capacity').val());
+                obj['client_id'] = Number.parseInt($('#client_id').val());
                    
                 var jsonObj = JSON.stringify(obj);
                 console.log(jsonObj);

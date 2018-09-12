@@ -43,10 +43,6 @@ public class Client implements Serializable {
     String email;
     String phone;
     
-//    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "client_id")
-//    List<Shipment> shipments;
-
     public Client(String name, String location, String email, String phone) {
         this.name = name;
         this.location = location;
