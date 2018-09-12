@@ -35,11 +35,16 @@
             <div class="card-block">
                 <form id="form">
                     <div class="form-group">
+                        <label for="id">Search the client you want to delete:</label>
+                        <select id="client_id_select">                            
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="text">Client ID:</label>
                         <input type="number" class="form-control" id="id" placeholder="Enter client's Id you want to erase">
                     </div>
                     <div id='button'>
-                        <button type="button" class="btn btn-danger" value="delete">Delete</button>
+                        <button type="submit" class="btn btn-danger" value="delete">Delete</button>
                     </div>                   
                 </form>
             </div>
@@ -48,13 +53,14 @@
         <script>
             $("#form").submit(function (event) {
                 var obj = {};
-                obj['name'] = $('#name').val();
-                obj['email'] = $('#email').val();
-                obj['phone'] = $('#phone').val();
-                obj['location'] = $('#location').val();
+//                obj['name'] = $('#name').val();
+//                obj['email'] = $('#email').val();
+//                obj['phone'] = $('#phone').val();
+//                obj['location'] = $('#location').val();
+                obj['id'] = $('#id').val();
 
                 var jsonObj = JSON.stringify(obj);
-                const URL = "http://localhost:8080/ManagerApp/resources/clients/deleteById/" + $("#id").val();
+                const URL = "http://localhost:8080/Thesis/resources/clients/deleteById/" + $("#id").val();
                 console.log(jsonObj);
                 $.ajax({
                     type: "GET",
@@ -66,7 +72,7 @@
                 event.preventDefault();
             });
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="./clientsIds.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </body>

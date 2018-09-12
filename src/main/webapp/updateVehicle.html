@@ -43,7 +43,7 @@
             obj['active'] = $('#active').val();
             
             var jsonObj = JSON.stringify(obj);
-            const URL = "http://localhost:8080/ManagerApp/resources/vehicles/updateById/" + $("#id").val(); 
+            const URL = "http://localhost:8080/Thesis/resources/vehicles/updateById/" + $("#id").val(); 
             console.log(jsonObj);
             $.ajax({
                 type: "POST",

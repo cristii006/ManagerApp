@@ -55,11 +55,23 @@
                         <label for="load">Load(t):</label>
                         <input type="number" class="form-control" id="load" placeholder="Load">
                     </div>
-                    <div class="invisible">
-                        <div class="form-group">
-                            <label for="id">Shipment ID:</label>
-                            <input type="text" class="form-control" id="id">
-                        </div>
+                    <div class="form-group">
+                        <label for="client_id_select">Look for the Client's Id's you wish to update:</label>
+                        <select id="client_id_select">                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="client_id">Client ID:</label>
+                        <input type="text" class="form-control" id="client_id">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipment_id_select">Search the shipment you want update:</label>
+                        <select id="shipment_id_select">                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Shipment ID:</label>
+                        <input type="number" class="form-control" id="id" placeholder="Enter shipment's Id you want to update">
                     </div>
                     <div id="button">
                         <button type="button" class="btn btn-success" value="update">Submit</button>
@@ -76,9 +88,11 @@
                 obj['finaldate'] = $('#finaldate').val();
                 obj['transportType'] = $('#transportType').val();
                 obj['load'] = $('#load').val();
+                obj['client_id'] = $('#client_id').val();
+                obj['id'] = $('#id').val();
 
                 var jsonObj = JSON.stringify(obj);
-                const URL = "http://localhost:8080/ManagerApp/resources/shipments/updateById/" + $("#id").val();
+                const URL = "http://localhost:8080/Thesis/resources/shipments/updateById/" + $("#id").val();
                 console.log(jsonObj);
                 $.ajax({
                     type: "POST",
@@ -90,7 +104,8 @@
                 event.preventDefault();
             });
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="./clientsIds.js"></script>
+        <script src="./shipmentslds.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </body>

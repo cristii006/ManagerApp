@@ -27,7 +27,7 @@
             obj['active'] = $('#active').val();
             
             var jsonObj = JSON.stringify(obj);
-            const URL = "http://localhost:8080/ManagerApp/resources/vehicles/deleteById/" + $("#id").val(); 
+            const URL = "http://localhost:8080/Thesis/resources/vehicles/deleteById/" + $("#id").val(); 
             console.log(jsonObj);
             $.ajax({
                 type: "GET",

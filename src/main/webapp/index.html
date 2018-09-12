@@ -11,19 +11,23 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script>
-           window.onload = function (){
-               const role = $.ajax({
+            window.onload = function () {
+                const role = $.ajax({
                     url: "http://localhost:8080/Thesis/resources/login",
                     type: 'GET',
                     success: function (data, textStatus, jqXHR) {
-                            if(data == true){
+                        console.log(window.location.href)
+                        if (data != -1) {
+                            if (data == 0) {
                                 window.location.href = "/Thesis/admin/adminIndex.html";
-                            }else{
+                            } else {
                                 window.location.href = "/Thesis/user/clientIndex.html";
                             }
+                        }
                     }
-               })
-           }
+
+                })
+            }
         </script>
     </head>
     <body>

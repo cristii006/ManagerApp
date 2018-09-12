@@ -41,6 +41,7 @@ public class ShipmentBean {
        s.setFinaldate(shipment.getFinaldate());
        s.setTransportType(shipment.getTransportType());
        s.setCapacity(shipment.getCapacity());
+       s.setClient_id(shipment.getClient_id());
        manager.merge(s);
     }
     

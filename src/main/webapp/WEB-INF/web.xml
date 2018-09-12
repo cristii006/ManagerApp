@@ -24,6 +24,7 @@
             <description/>
             <url-pattern>/*html</url-pattern>
             <url-pattern>/user/*</url-pattern>
+            <url-pattern>/</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
@@ -48,6 +49,6 @@
         <role-name>user</role-name>
     </security-role>
     <welcome-file-list>
-   <welcome-file>index.html</welcome-file>
-</welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
 </web-app>

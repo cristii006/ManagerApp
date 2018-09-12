@@ -51,14 +51,17 @@
                         <label for="phone">Phone:</label>
                         <input type="text" class="form-control" id="phone" placeholder="Phone">
                     </div>
-                    <div class="invisible">
-                        <div class="form-group">
-                            <label for="id">Client ID:</label>
-                            <input type="text" class="form-control" id="id">
-                        </div>
+                    <div class="form-group">
+                        <label for="id">Look for the Client's Id you wish to update:</label>
+                        <select id="client_id_select">                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="id">Client ID:</label>
+                        <input type="text" class="form-control" id="id">
                     </div>
                     <div id="button">
-                        <button type="button" class="btn btn-success" value="update">Submit</button>
+                        <button type="submit" class="btn btn-success" value="update">Submit</button>
                     </div>
                 </form>
             </div>
@@ -71,9 +74,10 @@
                 obj['email'] = $('#email').val();
                 obj['phone'] = $('#phone').val();
                 obj['location'] = $('#location').val();
+                obj['id'] = $('#id').val();
 
                 var jsonObj = JSON.stringify(obj);
-                const URL = "http://localhost:8080/ManagerApp/resources/clients/updateById/" + $("#id").val();
+                const URL = "http://localhost:8080/Thesis/resources/clients/updateById/" + $("#id").val();
                 console.log(jsonObj);
                 $.ajax({
                     type: "POST",
@@ -85,7 +89,7 @@
                 event.preventDefault();
             });
         </script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="./clientsIds.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
     </body>

@@ -23,8 +23,17 @@ public class Auth {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public boolean auth(){
-        return securityContext.isUserInRole("admin");
+    public int auth(){
+        boolean admin = securityContext.isUserInRole("admin");
+        boolean user = securityContext.isUserInRole("user");
+        
+        if(!user && !admin ){
+            return -1;
+        }
+        if(admin){
+            return 0;
+        }
+        return 1;
     }
 
     @GET

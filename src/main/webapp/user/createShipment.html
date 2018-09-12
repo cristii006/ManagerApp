@@ -55,16 +55,17 @@
                         <label for="load">Load(t):</label>
                         <input type="number" class="form-control" id="load" placeholder="Load">
                     </div>
-
                     <div class="form-group">
-                        <label for="id">Client ID:</label>
-                        <select id="client_id_select">
-                            
+                        <label for="id">Look for client's Id to which to deliver shipment</label>
+                        <select id="client_id_select">                           
                         </select>
                     </div>
-
+                    <div class="form-group">
+                        <label for="client_id_select">Client Id:</label>
+                        <input type="number" class="form-control" id="client_id" placeholder="Client ID">
+                    </div>
                     <div id="button">
-                        <button type="button" class="btn btn-success" value="create">Create</button>
+                        <button type="submit" class="btn btn-success" value="update">Create</button>
                     </div>
                 </form>   
             </div>
@@ -78,7 +79,7 @@
                 obj['finaldate'] = $('#finaldate').val();
                 obj['transportType'] = $('#transportType').val();
                 obj['load'] = $('#load').val();
-                obj['client_id'] = $('#client_id_select')[0].value;
+                obj['client_id'] = $('#client_id')[0].value;
                    
                 var jsonObj = JSON.stringify(obj);
                 console.log(jsonObj);
